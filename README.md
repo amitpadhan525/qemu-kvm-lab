@@ -1,4 +1,4 @@
-# QEMU/KVM Cybersecurity Lab on Arch Linux (B.Tech Project)
+# QEMU/KVM Cybersecurity Lab on Arch Linux
 
 Welcome! This repository contains a step-by-step guide and automation scripts to build a high-performance, fully isolated cybersecurity lab using **QEMU/KVM** on **Arch Linux**. 
 
