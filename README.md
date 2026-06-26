@@ -63,23 +63,3 @@ sudo usermod -aG kvm,libvirt $USER
 ---
 
 ## Lab Architecture Overview
-
-All virtual machines communicate over an isolated Layer 2 network bridge `br0` on the `192.168.100.0/24` subnet:
-
-```
-                  +--------------------------------+
-                  |         Arch Linux Host        |
-                  |         (192.168.100.1)        |
-                  +---------------+----------------+
-                                  |
-                      [ Virtual Switch: br0 ]
-                                  |
-         +------------------------+------------------------+
-         |                        |                        |
-  [ tap3 interface ]       [ tap4 interface ]       [ tap5 interface ]
-         |                        |                        |
-+--------+-------+        +-------+--------+       +-------+--------+
-|   Kali Linux   |        |   Windows 11   |       | Metasploitable |
-| (192.168.100.10)        | (192.168.100.20)       | (192.168.100.30)
-+----------------+        +----------------+       +----------------+
-```
