@@ -54,14 +54,16 @@ Here is a quick block diagram of how they fit together:
 flowchart TD
     subgraph Arch Host Kernel
         Bridge[Virtual Switch: br0]
+        Tap0[tap0 interface] <--> Bridge
+        Tap1[tap1 interface] <--> Bridge
+        Tap2[tap2 interface] <--> Bridge
         Tap3[tap3 interface] <--> Bridge
-        Tap4[tap4 interface] <--> Bridge
-        Tap5[tap5 interface] <--> Bridge
     end
 
-    Kali[VM 1: Kali Linux] <--> Tap3
-    Win11[VM 2: Windows 11] <--> Tap4
-    Meta2[VM 3: Metasploitable2] <--> Tap5
+    Ubuntu[VM 1: Ubuntu VM] <--> Tap0
+    Meta2[VM 2: Metasploitable2] <--> Tap1
+    Kali[VM 3: Kali Linux] <--> Tap2
+    Win11[VM 4: Windows 11] <--> Tap3
 ```
 
 1. **TAP Interface**: It's a virtual network card created on the host side.
@@ -96,29 +98,29 @@ sudo ip link set dev br0 up
 ```
 
 ### 3. Create the TAP interfaces for our VMs
-Each VM needs its own virtual cable. Let's create `tap3` for our first VM. 
+Each VM needs its own virtual cable. Let's create `tap0` for our first VM (Ubuntu). 
 
 Since we want to run QEMU as a normal user (running QEMU as root/sudo is a bad practice), we must tell the kernel that our local user owns this TAP interface:
 
 ```bash
 # Replace $USER with your Arch username if needed, but $USER is automatic
-sudo ip tuntap add name tap3 mode tap user $USER
+sudo ip tuntap add name tap0 mode tap user $USER
 ```
 
 ### 4. Plug the TAP interfaces into the bridge
-Now, connect `tap3` to our bridge switch:
+Now, connect `tap0` to our bridge switch:
 
 ```bash
-sudo ip link set dev tap3 master br0
+sudo ip link set dev tap0 master br0
 ```
 
 Finally, turn the TAP interface on:
 
 ```bash
-sudo ip link set dev tap3 up
+sudo ip link set dev tap0 up
 ```
 
-If you are setting up more VMs, just repeat steps 3 and 4 to create `tap4`, `tap5`, etc., and bind them all to `br0`.
+If you are setting up more VMs, just repeat steps 3 and 4 to create `tap1`, `tap2`, `tap3` (for Metasploitable2, Kali, and Windows 11) and bind them all to `br0`.
 
 ---
 
@@ -138,18 +140,18 @@ Now, the host is reachable at `192.168.100.1` by any VM sitting on the `192.168.
 
 # Connecting it all to QEMU
 
-To tell QEMU to plug the VM into our new bridge setup, append these lines to your VM launch script:
+To tell QEMU to plug the VM into our new bridge setup, append these lines to your VM launch script or alias:
 
 ```bash
 qemu-system-x86_64 \
   ... \
-  -netdev tap,id=lab,ifname=tap3,script=no,downscript=no \
-  -device virtio-net-pci,netdev=lab,mac=52:54:00:AA:00:13 \
+  -netdev tap,id=lab,ifname=tap2,script=no,downscript=no \
+  -device virtio-net-pci,netdev=lab,mac=52:54:00:AA:00:12 \
   ...
 ```
 
-* `-netdev tap,...,ifname=tap3`: Connects QEMU to our pre-configured `tap3` interface on the host. The `script=no,downscript=no` flags are super important—they tell QEMU not to try running any root-level network configuration scripts.
-* `-device virtio-net-pci,...,mac=52:54:00:AA:00:13`: Emulates a fast VirtIO network card. 
+* `-netdev tap,...,ifname=tap2`: Connects QEMU to our pre-configured `tap2` interface on the host. The `script=no,downscript=no` flags are super important—they tell QEMU not to try running any root-level network configuration scripts.
+* `-device virtio-net-pci,...,mac=52:54:00:AA:00:12`: Emulates a fast VirtIO network card. 
 * **Pro-tip**: You **must** change the MAC address (`mac=52:54:00:AA:00:XX`) for every single VM you run. If you use the exact same MAC address on multiple VMs, they will conflict on the bridge, and your network will completely break!
 
 ---
@@ -157,10 +159,10 @@ qemu-system-x86_64 \
 # If things break (Troubleshooting)
 
 ### Error: `qemu-system-x86_64: -netdev tap...: Device or resource busy`
-* **Why**: Another VM is already running on `tap3`, or the interface was left open when a VM crashed.
-* **Fix**: Assign a unique TAP interface per VM (e.g. `tap3` for Windows, `tap4` for Kali). To reset a stuck interface, delete it and recreate it:
+* **Why**: Another VM is already running on `tap2`, or the interface was left open when a VM crashed.
+* **Fix**: Assign a unique TAP interface per VM (e.g. `tap3` for Windows, `tap2` for Kali, etc.). To reset a stuck interface, delete it and recreate it:
   ```bash
-  sudo ip link delete tap3
+  sudo ip link delete tap2
   ```
 
 ### VMs can't ping each other
@@ -170,7 +172,7 @@ qemu-system-x86_64 \
      ```bash
      ip link show master br0
      ```
-     You should see `tap3`, `tap4`, etc. in the list.
+     You should see `tap0`, `tap1`, `tap2`, `tap3` in the list.
   2. Make sure they are all turned up:
      ```bash
      ip link show br0

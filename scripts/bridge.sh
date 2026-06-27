@@ -6,7 +6,7 @@ set -euo pipefail
 
 BRIDGE_NAME="br0"
 PHYSICAL_IFACE="enp6s0"
-TAP_INTERFACES=(tap3 tap4 tap5)
+TAP_INTERFACES=(tap0 tap1 tap2 tap3)
 
 require_root() {
   if [[ ${EUID:-$(id -u)} -ne 0 ]]; then

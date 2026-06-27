@@ -58,26 +58,18 @@ If you try to run it with UEFI (`edk2-ovmf`) or VirtIO storage (`if=virtio`), it
 
 We need to boot it using **legacy IDE disk emulation** and a standard **Intel E1000 network card**.
 
-Here is the QEMU launch command:
+Here is the QEMU launch command or shell alias:
 
 ```bash
-qemu-system-x86_64 \
-  -enable-kvm \
-  -machine q35,accel=kvm \
-  -m 1G \
-  -smp 2 \
-  -display gtk \
-  -boot c \
-  -drive file=$HOME/VMs/metasploitable2/metasploitable.qcow2,format=qcow2,if=ide \
-  -netdev tap,id=lab,ifname=tap5,script=no,downscript=no \
-  -device e1000,netdev=lab,mac=52:54:00:AA:00:30
+alias metasploitable='qemu-system-x86_64 -enable-kvm -machine q35,accel=kvm -cpu host -smp 1 -m 1G -device virtio-vga -display gtk -drive file=$HOME/VMs/Metasploitable2-Linux/Metasploitable.vmdk,format=vmdk -netdev user,id=internet -device e1000,netdev=internet -netdev tap,id=lab,ifname=tap1,script=no,downscript=no -device e1000,netdev=lab,mac=52:54:00:AA:00:11 -daemonize'
 ```
 
 ### Key Parameters:
 * `-m 1G`: It only needs 1 GB of RAM (it doesn't run a graphical desktop, only a terminal command line).
-* `if=ide`: Emulates an older IDE hard disk controller instead of VirtIO.
+* `format=vmdk`: Mounts the virtual machine VMDK image directly.
 * `-device e1000`: Emulates an Intel E1000 Gigabit network card, which is widely supported by older Linux kernels.
-* `tap5`: Connects to our fifth TAP interface on the host, which is plugged into our private bridge `br0`.
+* `tap1`: Connects to the second TAP interface on the host, which is plugged into our private bridge `br0`.
+* `52:54:00:AA:00:11`: Sets the MAC address to match the virtual IP mapping.
 
 ---
 

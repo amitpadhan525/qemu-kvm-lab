@@ -81,9 +81,9 @@ Here are the exact errors we ran into while setting this lab up on Arch Linux, a
 * **Why it happens**: Creating network interfaces is a root-only task, or the TAP interface is owned by `root` instead of your user.
 * **The Fix**: When creating the TAP interface, you *must* assign ownership to your local user:
   ```bash
-  sudo ip tuntap add name tap3 mode tap user $USER
+  sudo ip tuntap add name tap2 mode tap user $USER
   ```
-  If it was already created by root, delete it (`sudo ip link delete tap3`) and recreate it correctly.
+  If it was already created by root, delete it (`sudo ip link delete tap2`) and recreate it correctly.
 
 ### 4. Internet works but VMs can't ping each other
 * **The Error**: You can ping `google.com` (via the NAT interface), but you cannot ping `192.168.100.20` (Windows VM) from Kali Linux.
@@ -91,7 +91,7 @@ Here are the exact errors we ran into while setting this lab up on Arch Linux, a
   1. The TAP interfaces are not bound to the `br0` bridge.
   2. Windows Defender firewall blocks ICMP (ping) traffic by default.
 * **The Fix**:
-  1. On the host, verify the bridge links: `ip link show master br0`. If `tap3` or `tap4` is missing, plug them in: `sudo ip link set dev tap3 master br0`.
+  1. On the host, verify the bridge links: `ip link show master br0`. If `tap2` or `tap3` is missing, plug them in: `sudo ip link set dev tap2 master br0`.
   2. In the Windows 11 VM, open **Windows Defender Firewall** -> **Advanced Settings** -> **Inbound Rules**, search for **File and Printer Sharing (Echo Request - ICMPv4-In)** and enable it.
 
 ### 5. VM boots but display is laggy or screen is black
