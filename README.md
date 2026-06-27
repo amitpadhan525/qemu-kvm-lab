@@ -8,7 +8,7 @@ Whether you are studying for a networks exam, practicing penetration testing, or
 
 ### 🎥 Lab Setup Demo
 
-<video src="assets/videos/lab setup.mp4" width="100%" controls></video>
+<video src="assets/videos/lab%20setup.mp4" width="100%" controls></video>
 
 ---
 
