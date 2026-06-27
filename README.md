@@ -8,12 +8,9 @@ Whether you are studying for a networks exam, practicing penetration testing, or
 
 ### 🎥 Lab Setup Demo
 
-<video controls width="100%" poster="assets/screenshots/all-in-one-with-waybar.png">
-  <source src="assets/videos/lab-setup.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Lab Setup Demo](assets/videos/lab-setup-preview.gif)
 
-Use the play button in the embedded video to watch the setup demo.
+Open the full video here: [assets/videos/lab-setup.mp4](assets/videos/lab-setup.mp4).
 
 ---
 
