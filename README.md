@@ -6,7 +6,7 @@ Whether you are studying for a networks exam, practicing penetration testing, or
 
 ![Cybersecurity Lab Running in Hyprland](assets/screenshots/all-in-one-with-waybar.png)
 
-### 🎥 Lab Setup Demo
+### 🎥 Lab Demo
 
 ![Lab Setup Demo](assets/videos/lab-setup-preview.gif)
 
