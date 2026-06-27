@@ -8,9 +8,9 @@ Whether you are studying for a networks exam, practicing penetration testing, or
 
 ### 🎥 Lab Setup Demo
 
-![Lab Setup Demo](assets/screenshots/all-in-one-with-waybar.png)
+![Lab Setup Demo](assets/videos/lab%20setup.mp4)
 
-The full setup video is available in `assets/videos/lab setup.mp4`.
+Use the play control in the embedded video to watch the setup demo.
 
 ---
 
