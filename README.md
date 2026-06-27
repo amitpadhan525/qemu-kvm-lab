@@ -8,7 +8,7 @@ Whether you are studying for a networks exam, practicing penetration testing, or
 
 ### 🎥 Lab Setup Demo
 
-[![Lab Setup Demo](assets/screenshots/all-in-one-with-waybar.png)](assets/videos/lab%20setup.mp4)
+[![Lab Setup Demo](assets/screenshots/all-in-one-with-waybar.png)](https://raw.githubusercontent.com/amitpadhan525/qemu-kvm-lab/main/assets/videos/lab%20setup.mp4)
 
 Click the preview to open the full setup video.
 
