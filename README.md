@@ -4,7 +4,11 @@ Welcome! This repository contains a step-by-step guide and automation scripts to
 
 Whether you are studying for a networks exam, practicing penetration testing, or conducting malware analysis, this setup provides a safe sandbox environment to run and attack target VMs without messing up your host system or home network.
 
-![Cybersecurity Lab Running in Hyprland](screenshots/all-in-one-with-waybar.png)
+![Cybersecurity Lab Running in Hyprland](assets/screenshots/all-in-one-with-waybar.png)
+
+### 🎥 Lab Setup Demo
+
+<video src="assets/videos/lab setup.mp4" width="100%" controls></video>
 
 ---
 

@@ -77,7 +77,7 @@ alias metasploitable='qemu-system-x86_64 -enable-kvm -machine q35,accel=kvm -cpu
 
 When the VM finishes booting, you won't see a desktop. You'll just see a standard terminal login prompt.
 
-![Metasploitable2 Login Screen](../screenshots/metasploitable-loginscreen.png)
+![Metasploitable2 Login Screen](../assets/screenshots/metasploitable-loginscreen.png)
 
 * **Default Username**: `msfadmin`
 * **Default Password**: `msfadmin`
@@ -88,6 +88,6 @@ Once logged in, you can check its IP address:
 ifconfig eth0
 ```
 
-![Metasploitable2 Successful Login State](../screenshots/metasploitable-after-login.png)
+![Metasploitable2 Successful Login State](../assets/screenshots/metasploitable-after-login.png)
 
 Ensure it has picked up the IP `192.168.100.30` (configure it statically in `/etc/network/interfaces` inside the VM if needed). Now you can start scanning it from your Kali Linux VM!

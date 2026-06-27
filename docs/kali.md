@@ -108,7 +108,7 @@ QEMU will boot up a graphical window.
 ### Step 4.1: Booting the Installer
 Choose **Graphical Install** from the GRUB boot menu.
 
-![Kali Boot Menu](../screenshots/kali-booting.png)
+![Kali Boot Menu](../assets/screenshots/kali-booting.png)
 
 Proceed through the standard language, region, and keyboard selection options. When prompted for network configuration:
 * The installer might ask which network interface to use as primary. Pick the interface associated with the **User Mode NAT** card (typically the first interface, e.g. `eth0` or `ens3`) so it can fetch mirror packages if needed during setup.
@@ -123,12 +123,12 @@ Stick to the default package selections (Desktop Environment: XFCE, and standard
 ### Step 4.4: Login Screen
 After rebooting, you will be greeted by the custom Kali login screen. Enter the username and password you created during setup.
 
-![Kali Login Screen](../screenshots/kali-loginscreen.png)
+![Kali Login Screen](../assets/screenshots/kali-loginscreen.png)
 
 ### Step 4.5: The Kali Desktop
 Welcome to your new hacking terminal! You will see the clean XFCE desktop environment loaded with the offensive security menu structure.
 
-![Kali Home Screen](../screenshots/kali-homescreen.png)
+![Kali Home Screen](../assets/screenshots/kali-homescreen.png)
 
 ---
 
@@ -188,7 +188,7 @@ sudo systemctl restart networking
 
 Verify your configuration using the terminal:
 
-![Kali About OS and IP Verification](../screenshots/kali-about-OS.png)
+![Kali About OS and IP Verification](../assets/screenshots/kali-about-OS.png)
 
 Confirm that:
 * You can ping the outside world: `ping -c 3 google.com` (routes through `eth0`).

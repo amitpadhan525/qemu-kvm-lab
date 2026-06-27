@@ -889,7 +889,7 @@ The first login may take several minutes.
 
 Do not close the virtual machine.
 
-![Windows 11 Login Screen](../screenshots/win11-loginscreen.png)
+![Windows 11 Login Screen](../assets/screenshots/win11-loginscreen.png)
 
 ---
 
@@ -932,7 +932,7 @@ Settings
 
 Install all available updates.
 
-![Windows Update in Progress](../screenshots/win11-updating.png)
+![Windows Update in Progress](../assets/screenshots/win11-updating.png)
 
 Restart the VM if required.
 
@@ -1114,7 +1114,7 @@ At this stage, the VM should support
 
 The Windows installation is now complete and ready for daily use or cybersecurity lab activities.
 
-![Windows 11 Desktop Homescreen](../screenshots/win11-homescreen.png)
+![Windows 11 Desktop Homescreen](../assets/screenshots/win11-homescreen.png)
 
 ---
 ---
@@ -1123,7 +1123,7 @@ The Windows installation is now complete and ready for daily use or cybersecurit
 
 This section covers several optimizations to improve the performance of the Windows 11 virtual machine.
 
-![Windows 11 Task Manager showing resources](../screenshots/win11-taskmanager.png)
+![Windows 11 Task Manager showing resources](../assets/screenshots/win11-taskmanager.png)
 
 ---
 

@@ -125,7 +125,7 @@ ubuntu -cdrom ~/Downloads/ISO/ubuntu-24.04-desktop-amd64.iso
 ### Step 5.1: The Boot Screen
 The Ubuntu installer GRUB bootloader will launch. Select **Try or Install Ubuntu**.
 
-![Ubuntu Boot Loader](../screenshots/ubuntu-starting.png)
+![Ubuntu Boot Loader](../assets/screenshots/ubuntu-starting.png)
 
 ### Step 5.2: Operating System Setup
 * Pick your language and keyboard configuration.
@@ -139,14 +139,14 @@ Once the installer finishes copying files, click **Restart Now**. Remove the `-c
 
 You will be greeted by the Ubuntu GDM Login Manager:
 
-![Ubuntu GDM Login Manager](../screenshots/ubuntu-loginscreen.png)
+![Ubuntu GDM Login Manager](../assets/screenshots/ubuntu-loginscreen.png)
 
 Log in with the credentials you configured.
 
 ### Step 5.4: The Desktop Environment
 You will load into the default Ubuntu GNOME Desktop.
 
-![Ubuntu GNOME Desktop Home](../screenshots/ubuntu-after-login.png)
+![Ubuntu GNOME Desktop Home](../assets/screenshots/ubuntu-after-login.png)
 
 ---
 
